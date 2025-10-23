@@ -49,7 +49,7 @@ export default function PublishPage() {
       <div className="text-sm text-gray-700 mb-3">{status}</div>
 
       <button
-        onClick={() => router.push("/watch/v1")}
+        onClick={() => router.push("/watch")}
         className="mt-2 px-4 py-2 bg-gray-800 text-white rounded"
       >
         Skip to Watch

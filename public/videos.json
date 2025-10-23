@@ -1,0 +1,9 @@
+[
+  {
+    "id": "v1",
+    "title": "Yellow Lane Intro",
+    "description": "Demo video for Yellow Lane pay per second",
+    "playbackUrl": "https://storage.googleapis.com/your-bucket/demo1.mp4",
+    "pricePerSecond": 1
+  }
+]

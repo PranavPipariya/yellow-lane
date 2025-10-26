@@ -12,7 +12,7 @@ import {
 } from "wagmi";
 import { baseSepolia } from "wagmi/chains";
 import { formatEther, keccak256, concatHex, toHex, parseEther } from "viem";
-import { PLINKO_ADDR } from "@/lib/contracts";
+const PLINKO_ADDR = "0xA14eC31d36C5ba64307e3eDd5a7B7497a02BB8fB";
 
 const GRID_SIZE = 25;
 const ROWS = 12 as const;

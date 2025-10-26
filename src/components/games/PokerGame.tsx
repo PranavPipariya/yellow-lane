@@ -30,7 +30,7 @@ import {
   type Hex,
   parseEther,
 } from "viem";
-import { PLINKO_ADDR } from "@/lib/contracts";
+const PLINKO_ADDR = "0xA14eC31d36C5ba64307e3eDd5a7B7497a02BB8fB";
 
 /** PlinkoEntropy ABI (minimal) */
 const PLINKO_ABI = [

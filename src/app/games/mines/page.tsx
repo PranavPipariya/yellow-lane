@@ -2,7 +2,7 @@
 "use client";
 import dynamic from "next/dynamic";
 
-const MinesGame = dynamic(() => import("@/components/games/MinesGame"), {
+const MinesGame = dynamic(() => import("@/components/games/Mines"), {
   ssr: false,
 });
 

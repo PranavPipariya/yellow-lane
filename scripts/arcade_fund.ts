@@ -1,6 +1,6 @@
 // scripts/arcade_fund.ts
 import hre from "hardhat";
-const { ethers } = hre;
+const { ethers }: any = hre;
 
 /**
  * Usage:

@@ -196,19 +196,40 @@ export default function MinesGame() {
 
   const notOnBaseSepolia = isConnected && chainId !== baseSepolia.id;
 
+  function beginLocalRound() {
+    const tempSeed = keccak256(toHex(BigInt(Date.now()), { size: 32 }));
+    const order = pseudoShuffle(tempSeed as `0x${string}`, GRID_SIZE);
+    const localGemsCount = 8; // arbitrary; real layout overwrites on BetSettled
+    setGems(new Set(order.slice(0, localGemsCount)));
+    setBombs(new Set(order.slice(localGemsCount)));
+    setRevealed([]);
+    setAnimating(false);
+  }
+
+  function onTileClick(idx: number) {
+    // reveal immediately on click
+    if (revealed.includes(idx)) return;
+    setRevealed((prev) => [...prev, idx]);
+  }
+
   const play = async () => {
     if (!isConnected || notOnBaseSepolia || !feeWei) return;
+
+    beginLocalRound();
+    setSettle(null);
+
     const stake = parseEther(betEth || "0");
     const fee = BigInt(feeWei.toString());
     lastStakeWeiRef.current = stake;
     lastFeeWeiRef.current = fee;
 
     // reset visuals
-    setRevealed([]);
-    setGems(new Set());
-    setBombs(new Set());
-    setAnimating(false);
-    setSettle(null);
+    // setRevealed([]);
+    // setGems(new Set());
+    // setBombs(new Set());
+    // setAnimating(false);
+    // setSettle(null);
+    // setSettle(null);
 
     await writeContractAsync({
       address: PLINKO_ADDR,
@@ -226,7 +247,7 @@ export default function MinesGame() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white p-8">
+    <div className="min-h-screen  text-white p-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
@@ -347,8 +368,10 @@ export default function MinesGame() {
                 return (
                   <div
                     key={i}
+                    onClick={() => onTileClick(i)}
                     className={[
                       "aspect-square rounded-lg transition-all duration-200 transform flex items-center justify-center border-2",
+                      "cursor-pointer",
                       state === "hidden" &&
                         "bg-gradient-to-br from-slate-700 to-slate-800 border-slate-600",
                       state === "gem" &&

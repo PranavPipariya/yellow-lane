@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import type { JSX } from "react";
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   effect?: "expandIcon" | "none";

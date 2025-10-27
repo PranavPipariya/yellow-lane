@@ -1,8 +1,6 @@
 # Entropy Arcade – Provably Fair On-Chain Games Using Pyth Entropy
 
 Demo: [https://www.youtube.com/watch?v=Q15hgZXPQOo](https://www.youtube.com/watch?v=Q15hgZXPQOo)
-Source Code: [https://github.com/PranavPipariya/yellow-lane](https://github.com/PranavPipariya/yellow-lane)
-
 ---
 ## Overview
 
@@ -57,7 +55,7 @@ Implements the complete Plinko lifecycle:
 - Handles reward distribution to the player
 
 **Deployed Contract (Base Sepolia):**
-[`0x78498F041Aa2841Ea4C266dc0E1D9Df32B6E468a`](https://sepolia.basescan.org/address/0x78498F041Aa2841Ea4C266dc0E1D9Df32B6E468a)
+[`0xA14eC31d36C5ba64307e3eDd5a7B7497a02BB8fB`](https://sepolia.basescan.org/address/0xA14eC31d36C5ba64307e3eDd5a7B7497a02BB8fB)
 
 **Entropy Provider:**
 `0x6CC14824Ea2918f5De5C2f75A9Da968ad4BD6344`
@@ -128,6 +126,7 @@ pnpm install
 ```
 
 ---
+if you wanna redeploy the contract, add the pvt key aswell :
 
 ### 2. Environment Variables
 
@@ -148,6 +147,8 @@ pnpm hardhat run scripts/deploy.ts --network baseSepolia
 ```
 
 Deployment will output your contract address and linked entropy provider.
+
+so you can simply search 0xA14eC31d36C5ba64307e3eDd5a7B7497a02BB8fB across the project and replace it witht the address you get.
 
 ---
 

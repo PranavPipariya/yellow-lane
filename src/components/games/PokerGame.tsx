@@ -167,6 +167,11 @@ const PokerGame: React.FC = () => {
     functionName: "getCurrentFee",
     query: { refetchInterval: 10_000 },
   });
+  function startImmediately() {
+    setMessage("Dealing… awaiting on-chain result");
+    const tempSeed = keccak256(toHex(BigInt(Date.now()), { size: 32 }));
+    dealFromSeed(tempSeed);
+  }
 
   const { writeContractAsync, data: txHash, isPending } = useWriteContract();
   const { isLoading: waitingReceipt } = useWaitForTransactionReceipt({
@@ -245,6 +250,7 @@ const PokerGame: React.FC = () => {
   const notOnBaseSepolia = isConnected && chainId !== baseSepolia.id;
 
   const play = async () => {
+    startImmediately();
     if (!isConnected || notOnBaseSepolia || !feeWei) return;
     const stake = parseEther(betEth || "0");
     const fee = BigInt(feeWei.toString());
@@ -304,7 +310,7 @@ const PokerGame: React.FC = () => {
   );
 
   return (
-    <div className="w-full h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4 overflow-hidden relative">
+    <div className="w-full h-screen  flex items-center justify-center p-4 overflow-hidden relative">
       {showConfetti && <Confetti />}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-0 left-0 w-96 h-96 bg-purple-500 rounded-full blur-3xl animate-pulse"></div>

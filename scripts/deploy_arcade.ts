@@ -1,6 +1,6 @@
 // scripts/deploy_arcade.ts
 import hre from "hardhat";
-const { ethers } = hre;
+const { ethers }: any = hre;
 
 // Pyth Entropy (Base Sepolia) – official address
 const ENTROPY = "0x41c9e39574F40Ad34c79f1C99B66A45eFB830d4c";
@@ -41,7 +41,10 @@ async function main() {
     const feeVia = await (contract as any).getCurrentFee();
     console.log("Entropy fee (via contract) wei:", feeVia.toString());
   } catch (e: any) {
-    console.log("Skipping getCurrentFee immediately after deploy:", e?.message || e);
+    console.log(
+      "Skipping getCurrentFee immediately after deploy:",
+      e?.message || e,
+    );
   }
 
   console.log("\nPaste this into your front-end:");

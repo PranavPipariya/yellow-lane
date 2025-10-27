@@ -52,7 +52,7 @@ export function Hero() {
                 ? wrongChain
                   ? "Connected — wrong network"
                   : "Wallet connected"
-                : connectStatus === "connecting"
+                : connectStatus === "pending"
                   ? "Connecting…"
                   : "Connect wallet and start playing!"}
             </Button>

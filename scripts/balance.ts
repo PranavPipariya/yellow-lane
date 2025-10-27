@@ -1,5 +1,5 @@
 import hre from "hardhat";
-const { ethers } = hre;
+const { ethers }: any = hre;
 
 const CONTRACT = "0xA14eC31d36C5ba64307e3eDd5a7B7497a02BB8fB";
 
